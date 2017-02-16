@@ -13,38 +13,63 @@ jquery.modules.ex1 = (function(){
 })();
 
 jquery.modules.ex2 = (function(){
-    var defWidth = $('.boite_orange').css('width');
+    var $boiteOrange = $('.boite_orange');
+    var defWidth = $boiteOrange.css('width');
+    var $buttonAdd = $('button#one');
+    var $buttonChange = $('button#two');
+    var $buttonFade = $('button#three');
 
-    var buttonAdd = $('button#one');
-    var buttonChange = $('button#two');
-    var buttonFade = $('button#three');
+    var $sectionSquare = $('section#square');
 
-    var sectionSquare = $('section#square');
-
-    $('.boite_orange').mouseover(function(){
-        $('.boite_orange').css('width','+=10');
+    $boiteOrange.mouseover(function(){
+        $(this).css('width','+=10');
         console.log("Survol");
     });
-    $('.boite_orange').click(function(){
-        $('.boite_orange').css('width',defWidth);
+    $boiteOrange.click(function(){
+        $(this).css('width',defWidth);
     });
 
-    buttonAdd.click(function(){
-        var count = sectionSquare.children().length + 1;
-        sectionSquare.append('<div class="boite_orange">' + count + '</div>')
+    $buttonAdd.click(function(){
+        var count = $sectionSquare.children().length + 1;
+        $sectionSquare.append('<div class="boite_orange">' + count + '</div>');
+        $boiteOrange = $('.boite_orange');
     });
 
-    buttonChange.click(function () {
-        $('.boite_orange').toggleClass('boite_orange2');
+    $buttonChange.click(function () {
+        $boiteOrange.toggleClass('boite_orange2');
     });
 
-    buttonFade.click(function(){
-        $('.boite_orange').fadeToggle();
+    $buttonFade.click(function(){
+        $boiteOrange.fadeToggle();
     });
 })();
 
 jquery.modules.ex3 = (function(){
     $('button#showContent').click(function(){
         $('p.slidingContent').slideToggle();
+    });
+})();
+
+jquery.modules.ex4 = (function () {
+    var $menus = $('li.menu');
+    var $currentShown;
+    $menus.on('click', function () {
+        if ($currentShown != null && $currentShown != $(this).find('ul')){
+            $currentShown.slideToggle();
+        }
+        $currentShown = $(this).find('ul');
+        $currentShown.slideToggle();
+    });
+})();
+
+jquery.modules.ex5 = (function () {
+    $boutonModal = $('#four');
+    $modal = $('#modal1');
+    $modalClose = $('#modal_close');
+    $boutonModal.click(function () {
+        $modal.toggle();
+    });
+    $modalClose.click(function () {
+        $modal.hide();
     });
 })();

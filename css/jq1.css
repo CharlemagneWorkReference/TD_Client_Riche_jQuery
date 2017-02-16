@@ -71,6 +71,7 @@ li.menu > ul {
     color: white;
     background-color: grey;
     width: 8em;
+    position: absolute;
 }
 
 li.menu > ul >li:hover {
@@ -121,4 +122,17 @@ a {
 
 .modal {
     display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(66, 66, 66, 0.56);
+}
+
+#modal_content > img {
+    width: 50%;
+    position: fixed;
+    top: 25%;
+    left: 25%;
 }
